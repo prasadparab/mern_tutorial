@@ -19,7 +19,7 @@ const Header = ({ setSearch }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        {userInfo.name ? (
+        {userInfo?.name ? (
           <Fragment>
             <Navbar.Brand>
               <Link to="/">Home</Link>

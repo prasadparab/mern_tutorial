@@ -26,9 +26,7 @@ export const ListNotesAction = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const data = await fetch("http://localhost:5000/api/notes", config).then(
-      (data) => data.json()
-    );
+    const data = await fetch("/api/notes", config).then((data) => data.json());
     //console.log("list all notes", data);
     if (data.length) dispatch({ type: NOTES_LIST_REQ_SUCCESS, payload: data });
     else dispatch({ type: NOTES_LIST_REQ_FAILED, payload: data });
@@ -51,7 +49,7 @@ export const createNoteAction =
         },
       };
 
-      const data = await fetch("http://localhost:5000/api/notes/create", {
+      const data = await fetch("/api/notes/create", {
         ...config,
         method: "POST",
         body: JSON.stringify({ title, category, content }),
@@ -78,7 +76,7 @@ export const updateNoteAction =
         },
       };
 
-      const data = await fetch(`http://localhost:5000/api/notes/${id}`, {
+      const data = await fetch(`/api/notes/${id}`, {
         ...config,
         method: "PUT",
         body: JSON.stringify({ title, category, content }),
@@ -104,7 +102,7 @@ export const deleteNoteAction = (id) => async (dispatch, getState) => {
       },
     };
 
-    const data = await fetch(`http://localhost:5000/api/notes/${id}`, {
+    const data = await fetch(`/api/notes/${id}`, {
       ...config,
       method: "DELETE",
     }).then((res) => res.json());

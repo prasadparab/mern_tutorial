@@ -39,16 +39,13 @@ const RegisterPage = () => {
     ) {
       const data = new FormData();
       data.append("profileImg", file);
-      const imgUrl = await fetch(
-        "http://localhost:5000/api/images/profile-pic",
-        {
-          method: "POST",
-          body: data,
-          header: {
-            "Content-Type": "multipart/form-data;",
-          },
-        }
-      ).then((res) => res.json());
+      const imgUrl = await fetch("/api/images/profile-pic", {
+        method: "POST",
+        body: data,
+        header: {
+          "Content-Type": "multipart/form-data;",
+        },
+      }).then((res) => res.json());
       setPic(imgUrl.userCreated.profileImg);
       console.log(imgUrl);
     }

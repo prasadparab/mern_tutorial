@@ -12,6 +12,7 @@ mern_ui/node_modules/
 
 # production
 /build
+/mern_ui/build
 
 # misc
 .DS_Store

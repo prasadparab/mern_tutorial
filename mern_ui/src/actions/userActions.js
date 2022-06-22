@@ -16,7 +16,7 @@ export const LoginAction = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: USER_LOGIN });
 
-    const data = await fetch("http://localhost:5000/api/users/login", {
+    const data = await fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -47,7 +47,7 @@ export const LogoutAction = () => async (dispatch) => {
 export const RegisterUser = (user) => async (dispatch) => {
   dispatch({ type: USER_REG });
   try {
-    const data = await fetch("http://localhost:5000/api/users/register", {
+    const data = await fetch("/api/users/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -82,7 +82,7 @@ export const UpdateUserProfileAction =
       },
     };
     try {
-      const data = await fetch("http://localhost:5000/api/users/profile", {
+      const data = await fetch("/api/users/profile", {
         method: "POST",
         ...config,
         body: JSON.stringify(userData),

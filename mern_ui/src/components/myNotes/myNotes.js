@@ -44,7 +44,7 @@ const MyNotes = ({ searchNote }) => {
     }
   };
   const fetchNotes = async () => {
-    return await fetch("http://localhost:5000/api/notes")
+    return await fetch("/api/notes")
       .then((resposne) => resposne.json())
       .then((data) => (typeof data === "Array" ? data : []));
     //console.log(data);

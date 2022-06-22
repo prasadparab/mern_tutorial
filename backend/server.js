@@ -63,13 +63,17 @@ app.use("/api/images", fileRoutes);
 //deployment code
 __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
-  app.use();
+  app.use(express.static(path.join(__dirname, "/mern_ui/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "mern_ui", "build", "index.html"));
+  });
 } else {
   app.get("/", (req, res) => {
     console.log("API is running");
     res.send("API is running");
   });
 }
+//deployment code end
 
 app.use(notFound);
 app.use(errorHandler);
